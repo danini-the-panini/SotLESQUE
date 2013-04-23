@@ -14,6 +14,12 @@ public class Scalar extends Node
         return value;
     }
 
+    @Override
+    public Node sheep()
+    {
+        return new Scalar(this.value);
+    }
+
     public double getValue()
     {
         return value;
@@ -22,6 +28,12 @@ public class Scalar extends Node
     public void setValue(double value)
     {
         this.value = value;
+    }
+
+    @Override
+    public String toString()
+    {
+        return String.format("%.6G", value);
     }
     
 }
