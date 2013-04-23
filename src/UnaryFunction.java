@@ -5,20 +5,18 @@ public class UnaryFunction extends Node
             ACOS = 8, ATAN = 9;
     public static final int NUM_TYPES = 10;
     
-    private Node child;
-    
     private int type;
 
     public UnaryFunction(Node child, int type)
     {
-        this.child = child;
+        super(new Node[]{child});
         this.type = type;
     }
 
     @Override
     public double evaluate()
     {
-        return function(child.evaluate());
+        return function(children[0].evaluate());
     }
     
     public double function(double a)

@@ -4,6 +4,7 @@ public class Scalar extends Node
 
     public Scalar(double value)
     {
+        super(null);
         this.value = value;
     }
     
@@ -11,6 +12,16 @@ public class Scalar extends Node
     public double evaluate()
     {
         return value;
+    }
+
+    public double getValue()
+    {
+        return value;
+    }
+
+    public void setValue(double value)
+    {
+        this.value = value;
     }
     
 }

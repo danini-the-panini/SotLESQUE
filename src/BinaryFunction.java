@@ -5,20 +5,17 @@ public class BinaryFunction extends Node
     public static final int NUM_TYPES = 6;
     
     private int type;
-    
-    private Node left, right;
 
     public BinaryFunction(Node left, Node right, int type)
     {
-        this.left = left;
-        this.right = right;
+        super(new Node[]{left, right});
         this.type = type;
     }
     
     @Override
     public double evaluate()
     {
-        return function(left.evaluate(), right.evaluate());
+        return function(children[0].evaluate(), children[1].evaluate());
     }
     
     public double function(double a, double b)
