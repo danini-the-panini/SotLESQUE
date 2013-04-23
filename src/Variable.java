@@ -11,11 +11,13 @@ public class Variable extends Node
     @Override
     public double evaluate()
     {
-        // TODO: get value from "Environment" (hypothetical singleton class)
-        
-        // something like this:
-        // return Environment.getInstance().getVariableValue(this.id);
-        return Double.NaN;
+        return Environment.getInstance().getVariableValue(this.id);
+    }
+
+    @Override
+    public void mutate()
+    {
+        id = Tree.RANDOM.nextInt(Environment.getInstance().getVariableCount());
     }
 
     @Override
@@ -27,10 +29,6 @@ public class Variable extends Node
     @Override
     public String toString()
     {
-        // TODO: get name from "Environment".
-        
-        // something like this:
-        // return Environment.getInstance().getVariableName(this.id);
-        return "$"+id;
+        return Environment.getInstance().getVariableName(this.id);
     }
 }

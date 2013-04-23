@@ -15,6 +15,12 @@ public class Scalar extends Node
     }
 
     @Override
+    public void mutate()
+    {
+        value += Tree.RANDOM.nextGaussian()*Environment.getInstance().getGaussStdDev();
+    }
+
+    @Override
     public Node sheep()
     {
         return new Scalar(this.value);

@@ -5,6 +5,8 @@ public abstract class Node
      * @return The evaluation of this node.
      */
     public abstract double evaluate();
+    
+    public abstract void mutate();
 
     /**
      * Clone function.

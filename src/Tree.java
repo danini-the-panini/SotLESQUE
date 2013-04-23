@@ -35,7 +35,7 @@ public class Tree
                     Scalar[] scalars = defFindScalars(root, depth);
         
                     int rand = RANDOM.nextInt(scalars.length);
-                    scalars[rand].setValue(scalars[rand].getValue() + RANDOM.nextGaussian());
+                    scalars[rand].mutate();
                 }
                 break;
             case MUTATE_CHANGE_FUNC:
@@ -231,8 +231,12 @@ public class Tree
     // helper function for generating nodes.
     private static Node generateNode(int depth, int sofar)
     {
+        Environment env = Environment.getInstance();
+        double min = env.getScalarMinValue();
+        double max = env.getScalarMaxValue();
+        
         if (depth == 1)
-            return new Scalar(RANDOM.nextDouble()); // TODO: specify a "range" for the random number?
+            return new Scalar(RANDOM.nextDouble()*(max-min)+min);
         
         // a chance to "stop" the tree at the current branch,
         // probability is dependent on how deep we are (so far).
@@ -265,7 +269,8 @@ public class Tree
      */
     public static Tree generate(int depth)
     {
-        if (depth <= 0) throw new IllegalArgumentException("Cannot generate tree of depth " + depth + ".");
+        if (depth <= 0)
+            throw new IllegalArgumentException("Cannot generate tree of depth " + depth + ".");
         return new Tree(generateNode(depth, 0));
     }
     

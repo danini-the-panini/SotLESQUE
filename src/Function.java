@@ -10,6 +10,7 @@ public abstract class Function extends Node
 
     public abstract int getNumTypes();
     
+    @Override
     public void mutate()
     {
         int rand = (int)(Math.random()*(getNumTypes()-1));
